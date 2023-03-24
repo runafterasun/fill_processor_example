@@ -1,7 +1,6 @@
 package processor;
 
 import objects.fill.annotations.BoxType;
-import objects.fill.core.GlobalParameters;
 import objects.fill.object_param.Fill;
 import objects.fill.types.box_type.BoxTypeFill;
 
@@ -24,9 +23,9 @@ public class StringBoxTypeProc implements BoxTypeFill {
     }
 
     @Override
-    public Stream<Object> fillStream() {
+    public Stream<Object> fillStream(Fill fill) {
         return IntStream
-                .range(0, GlobalParameters.objectCount.getValue())
-                .mapToObj(i -> randomAlphabet());
+                .range(0, fill.getCollectionSize())
+                .mapToObj(i -> randomAlphabet(fill));
     }
 }
