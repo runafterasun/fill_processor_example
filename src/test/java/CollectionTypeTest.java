@@ -8,13 +8,13 @@ public class CollectionTypeTest {
     CollectionType collectionTypes = new CollectionType();
     @Test
     public void fillObject() {
-        CollectionTypeTest collectionType = RandomValue.fill(Fill.object(this).gen());
+        CollectionTypeTest collectionType = RandomValue.fill(Fill.object(this).collectionSize(6).gen());
 
-        assert collectionType.collectionTypes.getLongSet().size() == 5;
-        assert collectionType.collectionTypes.getStringList().size() == 5;
-        assert collectionType.collectionTypes.getIntegerCharacterMap().size() == 5;
-        assert collectionType.collectionTypes.getIntArray().length == 5;
-        assert collectionType.collectionTypes.getStringArray().length == 5;
+        assert collectionType.collectionTypes.getLongSet().size() == 6;
+        assert collectionType.collectionTypes.getStringList().size() == 6;
+        assert collectionType.collectionTypes.getIntegerCharacterMap().size() == 6;
+        assert collectionType.collectionTypes.getIntArray().length == 6;
+        assert collectionType.collectionTypes.getStringArray().length == 6;
 
     }
 

@@ -12,7 +12,7 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillObject() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(new SimpleBoxTypeTestObj()).gen());
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(new SimpleBoxTypeTestObj()).valueLength(7).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() != null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -26,7 +26,7 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillClass() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.clazz(SimpleBoxTypeTestObj.class).gen());
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() != null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -39,8 +39,15 @@ public class SimpleBoxTypeTest {
     }
 
     @Test
+    public void fillSingleClassFromList() {
+        Integer testInt = RandomValue.fillSingleVal(Fill.object(Integer.class).gen());
+
+        assert testInt != null;
+    }
+
+    @Test
     public void fillClassExcludeField() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.clazz(SimpleBoxTypeTestObj.class)
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(SimpleBoxTypeTestObj.class)
                 .excludeField(List.of("aBoolean", "aLong", "uuid")).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() == null;
@@ -72,7 +79,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillObjectList() {
         List<SimpleBoxTypeTestObj> simpleBoxTypeTestObjs = new ArrayList<>();
-        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.clazz(SimpleBoxTypeTestObj.class).gen());
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
     }
@@ -80,7 +87,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillObjectSet() {
         Set<SimpleBoxTypeTestObj> simpleBoxTypeTestObjs = new HashSet<>();
-        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.clazz(SimpleBoxTypeTestObj.class).gen());
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
     }
