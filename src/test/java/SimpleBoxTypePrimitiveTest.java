@@ -1,4 +1,5 @@
-import objects.fill.core.ObjectFillWithRandomValue;
+import objects.fill.core.RandomValue;
+import objects.fill.object_param.Fill;
 import org.example.objects.SimpleBoxTypePrimitive;
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +7,7 @@ public class SimpleBoxTypePrimitiveTest {
 
     @Test
     public void fillObjectWithPrimitive() {
-        SimpleBoxTypePrimitive simpleBoxTypeTestObj = ObjectFillWithRandomValue.fill(new SimpleBoxTypePrimitive());
+        SimpleBoxTypePrimitive simpleBoxTypeTestObj = RandomValue.fill(Fill.object(new SimpleBoxTypePrimitive()).gen());
 
         assert simpleBoxTypeTestObj.getPrimDouble() != 0.0d;
         assert simpleBoxTypeTestObj.getPrimInt() != 0;

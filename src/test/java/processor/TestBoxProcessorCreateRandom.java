@@ -2,7 +2,7 @@ package processor;
 
 import objects.fill.annotations.BoxType;
 import objects.fill.core.GlobalParameters;
-import objects.fill.object_param.FillObjectParams;
+import objects.fill.object_param.Fill;
 import objects.fill.types.box_type.BoxTypeFill;
 import org.example.processor.TestBoxClass;
 
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class TestBoxProcessorCreateRandom implements BoxTypeFill {
 
     @Override
-    public Object generate(FillObjectParams fillObjectParams) {
+    public Object generate(Fill fillObjectParams) {
         return new TestBoxClass("SomeTestClass");
     }
 

@@ -1,4 +1,5 @@
-import objects.fill.core.ObjectFillWithRandomValue;
+import objects.fill.core.RandomValue;
+import objects.fill.object_param.Fill;
 import org.example.objects.CollectionType;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,7 @@ public class CollectionTypeTest {
     CollectionType collectionTypes = new CollectionType();
     @Test
     public void fillObject() {
-        CollectionTypeTest collectionType = ObjectFillWithRandomValue.fill(this);
+        CollectionTypeTest collectionType = RandomValue.fill(Fill.object(this).gen());
 
         assert collectionType.collectionTypes.getLongSet().size() == 5;
         assert collectionType.collectionTypes.getStringList().size() == 5;
@@ -19,7 +20,7 @@ public class CollectionTypeTest {
 
     @Test
     public void fillObjectThis() {
-        CollectionType collectionType = ObjectFillWithRandomValue.fill(new CollectionType());
+        CollectionType collectionType = RandomValue.fill(Fill.object(new CollectionType()).gen());
 
         assert collectionType.getLongSet() != null;
 

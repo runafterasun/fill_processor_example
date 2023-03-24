@@ -2,7 +2,7 @@ package processor;
 
 import objects.fill.annotations.BoxType;
 import objects.fill.core.GlobalParameters;
-import objects.fill.object_param.FillObjectParams;
+import objects.fill.object_param.Fill;
 import objects.fill.types.box_type.BoxTypeFill;
 
 import java.util.stream.IntStream;
@@ -14,7 +14,7 @@ import static objects.fill.utils.RandomGenerator.randomAlphabet;
 public class StringBoxTypeProc implements BoxTypeFill {
 
     @Override
-    public Object generate(FillObjectParams fillObjectParams) {
+    public Object generate(Fill fillObjectParams) {
         return "randomAlphabet()";
     }
 

@@ -1,4 +1,5 @@
-import objects.fill.core.ObjectFillWithRandomValue;
+import objects.fill.core.RandomValue;
+import objects.fill.object_param.Fill;
 import org.example.objects.GenericType;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ public class GenericTypeTest {
 
     @Test
     public void fillObject() {
-        GenericTypeTest collectionType = ObjectFillWithRandomValue.fill(this);
+        GenericTypeTest collectionType = RandomValue.fill(Fill.object(this).gen());
 
         assert collectionType.collectionTypes.getGeneric() != null;
         assert collectionType.collectionTypes.getGenericList().size() == 5;
@@ -20,7 +21,7 @@ public class GenericTypeTest {
     public void fillObjectThis() {
         GenericType<String> collectionType = new GenericType<>();
 
-        collectionType = ObjectFillWithRandomValue.fillWithGeneric(collectionType, String.class);
+        collectionType = RandomValue.fill(Fill.object(collectionType).withGeneric(String.class).gen());
 
         assert collectionType.getGenericList() != null;
         assert collectionType.getGeneric() != null;

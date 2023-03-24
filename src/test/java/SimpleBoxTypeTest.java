@@ -1,4 +1,5 @@
-import objects.fill.core.ObjectFillWithRandomValue;
+import objects.fill.core.RandomValue;
+import objects.fill.object_param.Fill;
 import org.example.objects.SimpleBoxTypeTestObj;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillObject() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = ObjectFillWithRandomValue.fill(new SimpleBoxTypeTestObj());
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(new SimpleBoxTypeTestObj()).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() != null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -25,7 +26,7 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillClass() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = ObjectFillWithRandomValue.fill(SimpleBoxTypeTestObj.class);
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.clazz(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() != null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -39,7 +40,8 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillClassExcludeField() {
-        SimpleBoxTypeTestObj simpleBoxTypeTestObj = ObjectFillWithRandomValue.fill(SimpleBoxTypeTestObj.class, List.of("aBoolean", "aLong", "uuid"));
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.clazz(SimpleBoxTypeTestObj.class)
+                .excludeField(List.of("aBoolean", "aLong", "uuid")).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() == null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -55,7 +57,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillObjectExcludeField() {
         SimpleBoxTypeTestObj simpleBoxTypeTestObj =
-                ObjectFillWithRandomValue.fill(new SimpleBoxTypeTestObj(), List.of("aBoolean", "aLong", "uuid"));
+                RandomValue.fill(Fill.object(new SimpleBoxTypeTestObj()).excludeField(List.of("aBoolean", "aLong", "uuid")).gen());
 
         assert simpleBoxTypeTestObj.getaBoolean() == null;
         assert simpleBoxTypeTestObj.getaDouble() != null;
@@ -70,7 +72,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillObjectList() {
         List<SimpleBoxTypeTestObj> simpleBoxTypeTestObjs = new ArrayList<>();
-        ObjectFillWithRandomValue.fillCollection(simpleBoxTypeTestObjs, SimpleBoxTypeTestObj.class);
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.clazz(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
     }
@@ -78,7 +80,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillObjectSet() {
         Set<SimpleBoxTypeTestObj> simpleBoxTypeTestObjs = new HashSet<>();
-        ObjectFillWithRandomValue.fillCollection(simpleBoxTypeTestObjs, SimpleBoxTypeTestObj.class);
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.clazz(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
     }
