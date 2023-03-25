@@ -23,6 +23,8 @@ public class SimpleBoxTypeTest {
         assert simpleBoxTypeTestObj.getInteger() != null;
         assert simpleBoxTypeTestObj.getUuid() != null;
         assert simpleBoxTypeTestObj.getaChar() != null;
+        assert simpleBoxTypeTestObj.getTestEnum() != null;
+
     }
 
     @Test
@@ -91,6 +93,14 @@ public class SimpleBoxTypeTest {
         RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
+    }
+
+    @Test
+    public void fillObjectSetString() {
+        Set<String> simpleBoxTypeTestObjs = new HashSet<>();
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(String.class).gen());
+
+        assert simpleBoxTypeTestObjs.size() == 1;
     }
 
 

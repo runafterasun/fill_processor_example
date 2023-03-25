@@ -5,6 +5,8 @@ import java.util.UUID;
 
 public class SimpleBoxTypeTestObj {
 
+    private TestEnum testEnum;
+
     private String string;
 
     private Integer integer;
@@ -20,6 +22,14 @@ public class SimpleBoxTypeTestObj {
     private UUID uuid;
 
     private Character aChar;
+
+    public TestEnum getTestEnum() {
+        return testEnum;
+    }
+
+    public void setTestEnum(TestEnum testEnum) {
+        this.testEnum = testEnum;
+    }
 
     public Character getaChar() {
         return aChar;

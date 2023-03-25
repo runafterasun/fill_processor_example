@@ -7,7 +7,7 @@ import java.util.Set;
 public class CollectionType {
 
     private List<String> stringList;
-    private Set<Long> longSet;
+    private Set<String> stringSet;
 
     private Map<Integer, Character> integerCharacterMap;
 
@@ -39,12 +39,12 @@ public class CollectionType {
         this.stringList = stringList;
     }
 
-    public Set<Long> getLongSet() {
-        return longSet;
+    public Set<String> getLongSet() {
+        return stringSet;
     }
 
-    public void setLongSet(Set<Long> longSet) {
-        this.longSet = longSet;
+    public void setLongSet(Set<String> stringSet) {
+        this.stringSet = stringSet;
     }
 
     public Map<Integer, Character> getIntegerCharacterMap() {
