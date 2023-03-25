@@ -2,6 +2,8 @@ package processor;
 
 import objects.fill.core.RandomValue;
 import objects.fill.object_param.Fill;
+import org.example.objects.Child;
+import org.example.objects.Parent;
 import org.example.processor.BoxClassContainer;
 import org.example.processor.TestBoxClass;
 import org.junit.jupiter.api.Test;
@@ -19,5 +21,25 @@ public class TestBoxTest {
         TestBoxClass testBoxClass = RandomValue.fill(Fill.object(TestBoxClass.class).gen());
         System.out.println(testBoxClass.getTestField());
         assert testBoxClass.getTestField().equals("randomAlphabet()");
+    }
+
+    @Test
+    public void fillObjectTest() {
+        TestBoxClass testBoxClass = new TestBoxClass();
+        RandomValue.fill(Fill.object(testBoxClass).gen());
+        System.out.println(testBoxClass.getTestField());
+        assert testBoxClass.getTestField().equals("randomAlphabet()");
+    }
+
+
+    @Test
+    public void fillObjectParent() {
+        Parent parent = new Child();
+        RandomValue.fill(Fill.object(parent).gen());
+
+        Parent parentTrue = RandomValue.fill(Fill.object(new Parent()).gen());
+
+        assert !parent.getTen().equals(10);
+        assert !parentTrue.getTen().equals(10);
     }
 }

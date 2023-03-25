@@ -1,5 +1,6 @@
 import objects.fill.core.RandomValue;
 import objects.fill.object_param.Fill;
+import org.example.objects.First;
 import org.example.objects.SimpleBoxTypeTestObj;
 import org.junit.jupiter.api.Test;
 
@@ -90,5 +91,20 @@ public class SimpleBoxTypeTest {
         RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(SimpleBoxTypeTestObj.class).gen());
 
         assert simpleBoxTypeTestObjs.size() == 5;
+    }
+
+
+    @Test
+    public void fillObjectArray() {
+        SimpleBoxTypeTestObj[] simpleBoxTypeTestObjs = RandomValue.fillArray(Fill.object(SimpleBoxTypeTestObj.class).gen());
+
+        assert simpleBoxTypeTestObjs.length == 5;
+    }
+
+    @Test
+    public void testDeep() {
+        First first =  RandomValue.fill(Fill.object(First.class).setDeep(2).gen());
+
+        assert first.getSecond().getThird() == null;
     }
 }
