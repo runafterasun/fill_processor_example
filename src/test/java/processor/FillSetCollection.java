@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@CollectionType
+@CollectionType(clazz = Set.class)
 public class FillSetCollection implements CollectionTypeFill {
 
     @Override
@@ -18,11 +18,6 @@ public class FillSetCollection implements CollectionTypeFill {
                 .filter(ss -> ss instanceof String)
                 .map(dd -> ((String) dd).toUpperCase())
                 .collect(Collectors.toSet());
-    }
-
-    @Override
-    public Class<?> getClazz() {
-        return Set.class;
     }
 
 }

@@ -8,7 +8,7 @@ import org.example.objects.Parent;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@BoxType
+@BoxType(clazz = Parent.class)
 public class ParentProcessorCreateRandom implements BoxTypeFill {
 
     @Override
@@ -25,8 +25,4 @@ public class ParentProcessorCreateRandom implements BoxTypeFill {
                 .mapToObj(i -> generate(fill));
     }
 
-    @Override
-    public Class<?> getClazz() {
-        return Parent.class;
-    }
 }

@@ -8,7 +8,7 @@ import org.example.processor.TestBoxClass;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@BoxType
+@BoxType(clazz = TestBoxClass.class)
 public class TestBoxProcessorCreateRandom implements BoxTypeFill {
 
     @Override
@@ -23,8 +23,4 @@ public class TestBoxProcessorCreateRandom implements BoxTypeFill {
                 .mapToObj(i -> i + "SomeTestClass");
     }
 
-    @Override
-    public Class<?> getClazz() {
-        return TestBoxClass.class;
-    }
 }

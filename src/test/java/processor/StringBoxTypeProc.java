@@ -9,17 +9,12 @@ import java.util.stream.Stream;
 
 import static objects.fill.utils.RandomGenerator.randomAlphabet;
 
-@BoxType
+@BoxType(clazz = String.class)
 public class StringBoxTypeProc implements BoxTypeFill {
 
     @Override
     public Object generate(Fill fillObjectParams) {
         return "randomAlphabet()";
-    }
-
-    @Override
-    public Class<?> getClazz() {
-        return String.class;
     }
 
     @Override
