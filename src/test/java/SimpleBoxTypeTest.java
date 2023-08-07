@@ -1,8 +1,8 @@
-import objects.fill.core.RandomValue;
-import objects.fill.object_param.Fill;
 import org.example.objects.First;
 import org.example.objects.SimpleBoxTypeTestObj;
 import org.junit.jupiter.api.Test;
+import ru.objectsfill.core.RandomValue;
+import ru.objectsfill.object_param.Fill;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,7 +13,14 @@ public class SimpleBoxTypeTest {
 
     @Test
     public void fillObject() {
+
+        long startTime = System.nanoTime();
+
         SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(new SimpleBoxTypeTestObj()).valueLength(7).gen());
+
+        long elapsedTime = System.nanoTime() - startTime;
+
+        System.out.println("in millis = " + elapsedTime/1000000);
 
         assert simpleBoxTypeTestObj.getaBoolean() != null;
         assert simpleBoxTypeTestObj.getaDouble() != null;

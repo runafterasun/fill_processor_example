@@ -1,9 +1,9 @@
 package processor;
 
-import objects.fill.annotations.CollectionType;
-import objects.fill.object_param.Fill;
-import objects.fill.service.ElementCreationService;
-import objects.fill.types.collection_type.CollectionTypeFill;
+import ru.objectsfill.annotations.CollectionType;
+import ru.objectsfill.object_param.Fill;
+import ru.objectsfill.service.ElementCreationService;
+import ru.objectsfill.types.collection_type.CollectionTypeFill;
 
 import java.lang.reflect.Field;
 import java.util.Set;

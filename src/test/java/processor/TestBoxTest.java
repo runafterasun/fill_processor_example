@@ -1,12 +1,12 @@
 package processor;
 
-import objects.fill.core.RandomValue;
-import objects.fill.object_param.Fill;
 import org.example.objects.Child;
 import org.example.objects.Parent;
 import org.example.processor.BoxClassContainer;
 import org.example.processor.TestBoxClass;
 import org.junit.jupiter.api.Test;
+import ru.objectsfill.core.RandomValue;
+import ru.objectsfill.object_param.Fill;
 
 public class TestBoxTest {
 

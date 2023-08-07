@@ -1,8 +1,8 @@
 package processor;
 
-import objects.fill.annotations.BoxType;
-import objects.fill.object_param.Fill;
-import objects.fill.types.box_type.BoxTypeFill;
+import ru.objectsfill.annotations.BoxType;
+import ru.objectsfill.object_param.Fill;
+import ru.objectsfill.types.box_type.BoxTypeFill;
 
 import java.util.stream.Stream;
 

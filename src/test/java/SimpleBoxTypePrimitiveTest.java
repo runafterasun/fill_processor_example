@@ -1,7 +1,7 @@
-import objects.fill.core.RandomValue;
-import objects.fill.object_param.Fill;
 import org.example.objects.SimpleBoxTypePrimitive;
 import org.junit.jupiter.api.Test;
+import ru.objectsfill.core.RandomValue;
+import ru.objectsfill.object_param.Fill;
 
 public class SimpleBoxTypePrimitiveTest {
 
