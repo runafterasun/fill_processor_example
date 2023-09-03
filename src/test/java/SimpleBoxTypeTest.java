@@ -2,6 +2,7 @@ import org.example.objects.First;
 import org.example.objects.SimpleBoxTypeTestObj;
 import org.junit.jupiter.api.Test;
 import ru.objectsfill.core.RandomValue;
+import ru.objectsfill.object_param.Extend;
 import ru.objectsfill.object_param.Fill;
 
 import java.util.ArrayList;
@@ -95,6 +96,18 @@ public class SimpleBoxTypeTest {
     }
 
     @Test
+    public void fillObjectListExtParam() {
+        List<String> simpleBoxTypeTestObjs = new ArrayList<>();
+        RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(String.class)
+                .fieldParams(Extend.wrapByFunction().
+                        addMutationFunction(t -> t + "five").gen()
+                )
+                .gen());
+
+        assert simpleBoxTypeTestObjs.get(0).contains("five");
+    }
+
+    @Test
     public void fillObjectSet() {
         Set<SimpleBoxTypeTestObj> simpleBoxTypeTestObjs = new HashSet<>();
         RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(SimpleBoxTypeTestObj.class).gen());
@@ -119,9 +132,31 @@ public class SimpleBoxTypeTest {
     }
 
     @Test
+    public void fillArrayWithExtParam() {
+        String[] fillArrayWithExtParam = RandomValue.fillArray(Fill.object(String.class)
+                        .fieldParams(Extend.wrapByFunction().addMutationFunction(t -> t + "work").gen())
+                .gen());
+
+        assert fillArrayWithExtParam[1].contains("work");
+    }
+
+    @Test
     public void testDeep() {
         First first =  RandomValue.fill(Fill.object(First.class).setDeep(2).gen());
 
         assert first.getSecond().getThird() == null;
+    }
+
+    @Test
+    public void fillClassExtendParam() {
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(SimpleBoxTypeTestObj.class)
+                .fieldParams(
+                        Extend.field("string")
+                                .addMutationFunction(t -> t + "five")
+                                .gen()
+                )
+                .gen());
+
+        assert simpleBoxTypeTestObj.getString().contains("five");
     }
 }

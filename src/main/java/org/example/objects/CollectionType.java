@@ -3,10 +3,15 @@ package org.example.objects;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class CollectionType {
 
+    private Stream<String> stringStream;
+
     private List<String> stringList;
+
+    private List<Integer> intList;
     private Set<String> stringSet;
 
     private Map<Integer, Character> integerCharacterMap;
@@ -14,6 +19,30 @@ public class CollectionType {
     private Integer[] intArray;
 
     private String[] stringArray;
+
+    public Stream<String> getStringStream() {
+        return stringStream;
+    }
+
+    public void setStringStream(Stream<String> stringStream) {
+        this.stringStream = stringStream;
+    }
+
+    public List<Integer> getIntList() {
+        return intList;
+    }
+
+    public void setIntList(List<Integer> intList) {
+        this.intList = intList;
+    }
+
+    public Set<String> getStringSet() {
+        return stringSet;
+    }
+
+    public void setStringSet(Set<String> stringSet) {
+        this.stringSet = stringSet;
+    }
 
     public Integer[] getIntArray() {
         return intArray;
