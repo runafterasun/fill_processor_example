@@ -35,8 +35,7 @@ public class CollectionTypeTest {
     public void fillStreamWithGeneric() {
         Stream<String> collectionType = RandomValue.fillStream(Fill.object(String.class)
                 .fieldParams(
-                        Extend.wrapByFunction()
-                                .addMutationFunction(t -> "You Can do this")
+                        Extend.wrapByFunction(t -> "You Can do this")
                                 .collectionSize(10)
                                 .gen()
                 )

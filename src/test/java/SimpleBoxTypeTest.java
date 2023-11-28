@@ -99,8 +99,7 @@ public class SimpleBoxTypeTest {
     public void fillObjectListExtParam() {
         List<String> simpleBoxTypeTestObjs = new ArrayList<>();
         RandomValue.fillCollection(simpleBoxTypeTestObjs, Fill.object(String.class)
-                .fieldParams(Extend.wrapByFunction().
-                        addMutationFunction(t -> t + "five").gen()
+                .fieldParams(Extend.wrapByFunction(t -> t + "five").gen()
                 )
                 .gen());
 
@@ -134,7 +133,7 @@ public class SimpleBoxTypeTest {
     @Test
     public void fillArrayWithExtParam() {
         String[] fillArrayWithExtParam = RandomValue.fillArray(Fill.object(String.class)
-                        .fieldParams(Extend.wrapByFunction().addMutationFunction(t -> t + "work").gen())
+                        .fieldParams(Extend.wrapByFunction(t -> t + "work").gen())
                 .gen());
 
         assert fillArrayWithExtParam[1].contains("work");
@@ -152,6 +151,19 @@ public class SimpleBoxTypeTest {
         SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(SimpleBoxTypeTestObj.class)
                 .fieldParams(
                         Extend.field("string")
+                                .addMutationFunction(t -> t + "five")
+                                .gen()
+                )
+                .gen());
+
+        assert simpleBoxTypeTestObj.getString().contains("five");
+    }
+
+    @Test
+    public void fillClassExtendParamClass() {
+        SimpleBoxTypeTestObj simpleBoxTypeTestObj = RandomValue.fill(Fill.object(SimpleBoxTypeTestObj.class)
+                .fieldParams(
+                        Extend.clazz(String.class)
                                 .addMutationFunction(t -> t + "five")
                                 .gen()
                 )
